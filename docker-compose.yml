@@ -13,7 +13,7 @@ services:
       MYSQL_USER: ${GLOBAL_USER}
       MYSQL_PASSWORD: ${GLOBAL_PASSWORD}
     ports:
-      - '${MYSQL_PORT}:3306'
+      - "${MYSQL_PORT}:3306"
   # PhpMyAdmin
   phpmyadmin:
     depends_on:
@@ -36,7 +36,7 @@ services:
     volumes:
       - /docker_preprod/${DOCK_NAME}:/var/www/html
     environment:
-      WORDPRESS_DB_HOST: db:${MYSQL_PORT}
+      WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ${GLOBAL_USER}
       WORDPRESS_DB_PASSWORD: ${GLOBAL_PASSWORD}
   # FTP Server (pure-ftpd)
