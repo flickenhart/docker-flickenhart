@@ -42,7 +42,6 @@ services:
   # FTP Server (pure-ftpd)
   ftpd_server:
     image: stilliard/pure-ftpd:hardened
-    container_name: pure-ftpd
     ports:
       - "${FTP_PORT}:21"
       - "30000-30009:30000-30009"
