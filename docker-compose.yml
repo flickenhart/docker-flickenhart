@@ -1,11 +1,9 @@
-version: '2'
+version: '3'
 
 services:
   # Serveur MySQL
   db:
     image: mysql:5.7
-    volumes:
-      - /docker_preprod/${DOCK_NAME}:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
@@ -14,8 +12,6 @@ services:
       MYSQL_PASSWORD: ${GLOBAL_PASSWORD}
     ports:
       - '${MYSQL_PORT}:3306'
-    expose:
-      - '${MYSQL_PORT}'
   # PhpMyAdmin
   phpmyadmin:
     depends_on:
