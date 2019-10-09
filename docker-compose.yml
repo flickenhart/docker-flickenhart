@@ -37,3 +37,18 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD} 
+  # FTP Server
+  ftpd_server:
+    image: stilliard/pure-ftpd:hardened
+    ports:
+      - "${FTP_PORT}:21"
+      - "30000-30009:30000-30009"
+    volumes: # remember to replace /folder_on_disk/ with the path to where you want to store the files on the host machine
+      - "/${DOCK_NAME}/data:/home/username/"
+      - "/${DOCK_NAME}/passwd:/etc/pure-ftpd/passwd"
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: ${GLOBAL_USER}
+      FTP_USER_PASS: ${GLOBAL_PASSWORD}
+      FTP_USER_HOME: /home/${GLOBAL_USER}
+    restart: always
