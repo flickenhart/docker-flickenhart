@@ -54,5 +54,3 @@ services:
       FTP_USER_PASS: ${GLOBAL_PASSWORD}
       FTP_USER_HOME: /home/${GLOBAL_USER}
     restart: always
-volumes:
-  ${DOCK_NAME}:
